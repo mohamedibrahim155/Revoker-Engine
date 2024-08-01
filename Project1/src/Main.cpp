@@ -3,7 +3,7 @@
 int main()
 {
 	ApplicationRenderer application;
-	application.WindowInitialize(1920, 1080);
+	application.WindowInitialize(1920, 1080, "Ishtar Engine");
 	application.Render();
 	return 0;
 }
