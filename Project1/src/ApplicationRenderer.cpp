@@ -456,7 +456,7 @@ void ApplicationRenderer::RenderForCamera(Camera* camera, FrameBuffer* framebuff
         EntityManager::GetInstance().Render();
         SceneManager::GetInstance().Render();
     }
-    GraphicsRender::GetInstance().Draw(isSceneView);
+    GraphicsRender::GetInstance().Draw();
     GraphicsRender::GetInstance().SetCamera(camera);
 
     ParticleSystemManager::GetInstance().Render();
