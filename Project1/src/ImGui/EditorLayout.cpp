@@ -39,7 +39,7 @@ void EditorLayout::SetSelectedObjects(std::vector<Object*> objects)
     {
         SetSelectedObjectsEnable(false);
     }
-
+        
     selectedObjectsList.clear();
 
     selectedObjectsList = objects;
@@ -52,7 +52,7 @@ void EditorLayout::SetSelectedObjectsEnable(bool isEnable)
 {
     for (Object* object:  selectedObjectsList)
     {
-        object->isEnabled = isEnable;
+        object->isSelected = isEnable;
     }
 }
 

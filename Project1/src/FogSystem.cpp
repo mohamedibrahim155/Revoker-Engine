@@ -24,7 +24,7 @@ void FogSystem::DrawProperties()
 	DrawDragFloatImGui("Fog End", fogEnd, 0.1f, 0, 100);
 	DrawTransformVector3ImGui("Fog End", fogColor,0.59, width);
 	DrawBoolImGui("Fog Active", fogActive);
-	
+	ImGui::TreePop();
 }
 
 void FogSystem::SceneDraw()

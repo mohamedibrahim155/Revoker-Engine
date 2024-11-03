@@ -579,6 +579,8 @@ std::shared_ptr<Mesh> Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 
  void Model::DrawProperties()
  {
+     ImGui::Checkbox("###isActive" ,&isVisible);
+     ImGui::SameLine();
      Entity::DrawProperties();
 
      if (!ImGui::TreeNodeEx("Model Properties"))
@@ -595,16 +597,17 @@ std::shared_ptr<Mesh> Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
  {
      ImGuiTreeNodeFlags node_flags = ImGuiTreeNodeFlags_OpenOnArrow;
      node_flags |= ImGuiTreeNodeFlags_SpanFullWidth;
-
+    
      if (isSelected)
      {
          node_flags |= ImGuiTreeNodeFlags_Selected;
      }
 
+     ImGui::PushStyleColor(ImGuiCol_Text, isVisible ? ImVec4(1, 1, 1, 1) : ImVec4(0.4f, 0.4, 0.4, 1));
      bool node_open = ImGui::TreeNodeEx(name.c_str(), node_flags);
 
      if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen())
-     {
+     { 
          GraphicsRender::GetInstance().SetSelectedModel(this);
 
          EditorLayout::GetInstance().SetSelectedObjects({ this });
@@ -621,7 +624,7 @@ std::shared_ptr<Mesh> Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
              leaf_flags |= ImGuiTreeNodeFlags_SpanFullWidth;
 
              if (mesh->isSelected)
-             {
+             {         
                  leaf_flags |= ImGuiTreeNodeFlags_Selected;
              }
 
@@ -637,6 +640,7 @@ std::shared_ptr<Mesh> Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
          ImGui::TreePop();
      }
 
+     ImGui::PopStyleColor();
  }
 
 

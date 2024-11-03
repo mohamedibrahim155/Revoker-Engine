@@ -250,7 +250,7 @@ void ApplicationRenderer::Start()
     BaseScene* sceneSeven = new SceneSeven("occlusion");
     BaseScene* sceneEight = new SceneEight("SoftBody");
 
-    SceneManager::GetInstance().OnChangeScene("MainGame");
+    SceneManager::GetInstance().OnChangeScene("PlayerTest");
 
     FPS* fps = new FPS();
     fogSystem = new FogSystem();
@@ -456,7 +456,7 @@ void ApplicationRenderer::RenderForCamera(Camera* camera, FrameBuffer* framebuff
         EntityManager::GetInstance().Render();
         SceneManager::GetInstance().Render();
     }
-    GraphicsRender::GetInstance().Draw();
+    GraphicsRender::GetInstance().Draw(isSceneView);
     GraphicsRender::GetInstance().SetCamera(camera);
 
     ParticleSystemManager::GetInstance().Render();
