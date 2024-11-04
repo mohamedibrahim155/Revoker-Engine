@@ -205,6 +205,7 @@ void ApplicationRenderer::InitializeShaders()
     GraphicsRender::GetInstance().defaultInstanceShader = defaultInstanceShader;
     GraphicsRender::GetInstance().grassInstanceShader = grassInstanceShader;
     GraphicsRender::GetInstance().particleShader = particleShader;
+    GraphicsRender::GetInstance().skyboxShader = skyboxShader;
 
     LightManager::GetInstance().AddShader(defaultShader);
     LightManager::GetInstance().AddShader(boneAnimationShader);
@@ -437,7 +438,7 @@ void ApplicationRenderer::RenderForCamera(Camera* camera, FrameBuffer* framebuff
     particleShader->setMat4("projection", projection);
     particleShader->setMat4("view", view);
 
-    glDepthFunc(GL_LEQUAL);
+   
     skyboxShader->Bind();
     skyboxShader->setMat4("projection", projection);
     skyboxShader->setMat4("view", skyBoxView);
@@ -448,8 +449,7 @@ void ApplicationRenderer::RenderForCamera(Camera* camera, FrameBuffer* framebuff
     skyboxShader->setVec3("fogColor", fogSystem->fogColor);
     skyboxShader->setBool("fogActive", fogSystem->fogActive);
 
-    GraphicsRender::GetInstance().SkyBoxModel->Draw(skyboxShader);
-    glDepthFunc(GL_LESS);
+
 
     if (isSceneView)
     {

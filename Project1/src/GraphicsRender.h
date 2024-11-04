@@ -76,6 +76,7 @@ public:
 	Shader* defaultInstanceShader;
 	Shader* grassInstanceShader;
 	Shader* particleShader;
+	Shader* skyboxShader;
 	void SetSelectedModel(Model* model);
 	Model* GetSelectedModel();
 	Camera* camera;

@@ -114,7 +114,9 @@ void GraphicsRender::InitializeGraphics()
 
 void GraphicsRender::Draw()
 {
-
+	glDepthFunc(GL_LEQUAL);
+	SkyBoxModel->Draw(skyboxShader);
+	glDepthFunc(GL_LESS);
 
 	//glStencilMask(0x00);
 
